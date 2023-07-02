@@ -1,4 +1,9 @@
 class HeroPowersController < ApplicationController
+
+  def index
+    hero_power = HeroPower.all
+    render json: hero_power
+  end
   def create
     hero_power = HeroPower.new(hero_power_params)
     # render json: heroes, only: [:id, :name, :super_name]
@@ -10,6 +15,7 @@ class HeroPowersController < ApplicationController
   end
 
   private
+
 
   def hero_power_params
     params.require(:hero_power).permit(:strength, :hero_id, :power_id)
